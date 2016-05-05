@@ -29,6 +29,8 @@ class Almacen{
 	 */
 	Almacen(){
 		//COMPLETAR
+		productos = new Producto[this.MAXIMO_PROD];
+		siguiente = 0;
 	}
 
 	/**
@@ -41,7 +43,17 @@ class Almacen{
 	 */
 	boolean anyadir(Producto producto){
 		//COMPLETAR
-		return false;
+		 boolean correcto;
+		 correcto = false;
+		 if (buscar(producto.obtenerNombre()) != null) {
+			 System.out.println("Error. El elemento ya existe.");
+		 } else if (siguiente == MAXIMO_PROD) {
+			 System.out.println("Error. Agregado lleno.");
+		 } else {
+			 productos[siguiente++] = new Producto(producto);
+			 correcto = true;
+		 }
+		 return correcto; 
 	}
 
 	/**
@@ -53,6 +65,12 @@ class Almacen{
 	 */
 	boolean existe(Producto producto){
 		//COMPLETAR
+		int i = 0;
+		while (i < siguiente) {
+			if (producto.equals(productos[i])) {
+				return true;
+			}
+		}
 		return false;
 	}
 
