@@ -37,7 +37,7 @@ class Supermercado{
 	 */
 	boolean anyadir(Producto producto){
 		//COMPLETAR
-		return false;
+		return almacen.anyadir(producto);
 	}
 
 	/**
@@ -50,7 +50,7 @@ class Supermercado{
 	 */
 	Producto buscar(String producto){
 		//COMPLETAR
-		return null;
+		return almacen.buscar(producto);
 	}
 
 	/**
@@ -60,7 +60,7 @@ class Supermercado{
 	 */
 	public String toString(){
 		//COMPLETAR
-		return null;
+		return "Nombre: " + this.nombre + "/n" + almacen.toString();
 	}
 
 }
