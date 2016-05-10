@@ -50,7 +50,8 @@ class Almacen{
 		 } else if (siguiente == MAXIMO_PROD) {
 			 System.out.println("Error. Agregado lleno.");
 		 } else {
-			 productos[siguiente++] = new Producto(producto);
+			 productos[siguiente] = new Producto(producto);
+			 siguiente++;
 			 correcto = true;
 		 }
 		 return correcto; 
@@ -84,7 +85,25 @@ class Almacen{
 	 */
 	Producto buscar(String nombre){
 		//COMPLETAR
-		return null;
+		
+		Producto producto;
+		int mitad, limiteInferior, limiteSuperior;
+		mitad = 0;
+		limiteInferior = 0;
+		limiteSuperior = productos.length - 1;
+		producto = null;
+		while ( (limiteInferior <= limiteSuperior) &&
+				(producto == null)) {
+			mitad = (limiteInferior + limiteSuperior) / 2 ;
+			if (productos[mitad].esMenor(nombre)){
+				limiteInferior = mitad + 1;
+			} else if (productos[mitad].esMenor(nombre)) {
+				limiteSuperior = mitad - 1;
+			} else {
+				producto = productos[mitad];
+			}
+		}
+		return producto; 
 	}
 
 	/**
@@ -94,8 +113,12 @@ class Almacen{
 	 * @param i posicion del primer producto
 	 * @param j posicion del segundo producto
 	 */
-	void cambiar(int i, int j){
+	void cambiar(int i, int j){		
 		//COMPLETAR
+		Producto aux = null;
+		productos[i] = aux;
+		aux = productos[j];
+		productos[j] = productos[i];
 	}
 
 	/**
